@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'app_style.dart';
+
 void main() {
   runApp(Burmese_Digits_Calculator());
 }
@@ -39,238 +41,280 @@ class Burmese_Digits_Calculator extends StatelessWidget {
               Expanded(
                 flex: 7,
                 child: Container(
+                  //padding: EdgeInsets.all(4.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Row(
-                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          FlatButton(
-                            onPressed: () {},
-                            child: Container(
-                              child: Text(
-                                "ဖျက်",
-                                style: TextStyle(
-                                  fontSize: 25.0,
-                                  fontWeight: FontWeight.bold,
+                          Expanded(
+                            flex: 8,
+                            child: FlatButton(
+                              onPressed: () {},
+                              child: Container(
+                                child: Text(
+                                  "ဖျက်",
+                                  style: TextStyle(
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
                             child: Container(
-                              child: Text("%",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Container(
-                              child: Text("+/-",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ),
-                          ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Container(
-                              child: Text("/",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                          Expanded(
+                            flex: 2,
+                            child: FlatButton(
+                              onPressed: () {},
+                              child: Container(
+                                child: Text("/",
+                                    style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
                             ),
                           )
                         ],
                       ),
                       Divider(
                         color: Colors.yellow,
-                        thickness: 8.0,
+                        thickness: 5.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          FlatButton(
-                            onPressed: () {},
-                            child: Container(
-                              child: Text("၇",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                          Expanded(
+                            child: RegularNumberButton(
+                              isFun: () {
+                                print("It is pressed.");
+                              },
+                              label: "၇",
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
                             child: Container(
-                              child: Text("၈",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
+                            child: RegularNumberButton(
+                                isFun: () {
+                                  print('8 is pressed!');
+                                },
+                                label: "၈"),
+                          ),
+                          Expanded(
                             child: Container(
-                              child: Text("၉",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
+                            child: RegularNumberButton(
+                                isFun: () {
+                                  print('9 is pressed');
+                                },
+                                label: "၉"),
+                          ),
+                          Expanded(
                             child: Container(
-                              child: Text("x",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
+                          ),
+                          Expanded(
+                            child: RegularNumberButton(
+                                isFun: () {
+                                  print('x is pressed.');
+                                },
+                                label: "x"),
                           )
                         ],
                       ),
                       Divider(
                         color: Colors.yellow,
-                        thickness: 8.0,
+                        thickness: 5.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
+                              child: RegularNumberButton(
+                                  isFun: () {
+                                    print('4 is pressed');
+                                  },
+                                  label: "၄")),
+                          Expanded(
                             child: Container(
-                              child: Text("၄",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
+                              child: RegularNumberButton(
+                                  isFun: () {
+                                    print('5 is pressed');
+                                  },
+                                  label: "၅")),
+                          Expanded(
                             child: Container(
-                              child: Text("၅",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
+                              child: RegularNumberButton(
+                                  isFun: () {
+                                    print('6 is pressed');
+                                  },
+                                  label: "၆")),
+                          Expanded(
                             child: Container(
-                              child: Text("၆",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Container(
-                              child: Text("-",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ),
+                          Expanded(
+                            child: RegularNumberButton(
+                                isFun: () {
+                                  print('- is pressed');
+                                },
+                                label: "-"),
                           )
                         ],
                       ),
                       Divider(
                         color: Colors.yellow,
-                        thickness: 8.0,
+                        thickness: 5.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
+                            child: RegularNumberButton(
+                                isFun: () {
+                                  print('1 is pressed');
+                                },
+                                label: "၀"),
+                          ),
+                          Expanded(
                             child: Container(
-                              child: Text("၁",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
+                              child: RegularNumberButton(
+                                  isFun: () {
+                                    print('2 is pressed.');
+                                  },
+                                  label: "၂")),
+                          Expanded(
                             child: Container(
-                              child: Text("၂",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
+                              child: RegularNumberButton(
+                                  isFun: () {
+                                    print('3 is pressed.');
+                                  },
+                                  label: "၃")),
+                          Expanded(
                             child: Container(
-                              child: Text("၃",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Container(
-                              child: Text("+",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ),
+                          Expanded(
+                            child: RegularNumberButton(
+                                isFun: () {
+                                  print('+ is pressed.!');
+                                },
+                                label: "+"),
                           )
                         ],
                       ),
                       Divider(
                         color: Colors.yellow,
-                        thickness: 8.0,
+                        thickness: 5.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          FlatButton(
-                            onPressed: () {},
-                            child: Container(
-                              child: Text("၀",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                          Expanded(
+                            flex: 8,
+                            child: FlatButton(
+                              onPressed: () {},
+                              child: Container(
+                                child: Text("၀",
+                                    style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
+                          Expanded(
                             child: Container(
-                              child: Text(".",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              height: 60.0,
+                              child: VerticalDivider(
+                                thickness: 3.0,
+                                color: Colors.yellowAccent,
+                              ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Container(
-                              child: Text("=",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                          Expanded(
+                            flex: 2,
+                            child: FlatButton(
+                              onPressed: () {},
+                              child: Container(
+                                child: Text("=",
+                                    style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
                             ),
                           )
                         ],
@@ -282,6 +326,22 @@ class Burmese_Digits_Calculator extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class RegularNumberButton extends StatelessWidget {
+  RegularNumberButton({@required this.isFun, @required this.label});
+  final Function isFun;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      onPressed: isFun,
+      child: Container(
+        child: Text(label, style: buttonLabelStyle),
       ),
     );
   }
