@@ -23,6 +23,7 @@ class CalculatorBrain {
     _answer = (num1 ~/ num2).toInt();
   }
 
+  //Reminder: This function returns numbers in english digits
   int result() {
     return _answer;
   }

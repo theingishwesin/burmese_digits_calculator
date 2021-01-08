@@ -1,8 +1,10 @@
+//This Calculator_Page widget is the interface for Calculator UI.
 import 'package:burmese_digits_calculator/calculator_brain.dart';
 import 'package:flutter/material.dart';
 import 'app_style.dart';
 import 'RegularNumberButtonWidget.dart';
 
+//TODO: More Operation - MODULUS to be added later.
 enum OPERATION { ADD, SUBTRACT, MULTIPLY, DIVIDE }
 
 class Calculator_Page extends StatefulWidget {
@@ -11,50 +13,65 @@ class Calculator_Page extends StatefulWidget {
 }
 
 class _Calculator_PageState extends State<Calculator_Page> {
+  //Global variables for processing the display and number manipulations
   OPERATION _operation;
   String _display = '';
   int NUMB1 = null;
   int NUMB2 = null;
   String temp = '';
 
+  //This functions display digit on screen
+  //store input digits from user( in some cases concatenate with the previous digits)
   void keyFun(String str, String engStr) {
     _display = _display + str;
     temp = temp + engStr;
   }
 
+  //This function check which operation sign to be displayed on screen
+  void checkOperation(OPERATION op) {
+    if (op == OPERATION.ADD) {
+      _display = _display + " + ";
+    }
+    if (op == OPERATION.SUBTRACT) {
+      _display = _display + " - ";
+    }
+    if (op == OPERATION.MULTIPLY) {
+      _display = _display + " x ";
+    }
+    if (op == OPERATION.DIVIDE) {
+      _display = _display + " / ";
+    }
+  }
+
   void operationFun(OPERATION op) {
-    print("Inside the operationFun");
+    //print("Inside the operationFun");
 
     if (_operation == null && temp != null) {
+      // If it is the first time an operation button is clicked
       _operation = op;
       if (NUMB1 == null) {
         NUMB1 = int.parse(temp);
-        print('Numb1 is here! $NUMB1');
+        //print('Numb1 is here! $NUMB1');
       } else {
-        //Thinking is this necessary.
+        //Thinking is this necessary??
         NUMB2 = int.parse(temp);
-        print('Numb2 is here! $NUMB2');
+        //print('Numb2 is here! $NUMB2');
       }
-      temp = '';
 
-      if (op == OPERATION.ADD) {
-        _display = _display + " + ";
-      }
-      if (op == OPERATION.SUBTRACT) {
-        _display = _display + " - ";
-      }
-      if (op == OPERATION.MULTIPLY) {
-        _display = _display + " x ";
-      }
-      if (op == OPERATION.DIVIDE) {
-        _display = _display + " / ";
-      }
+      temp = ''; // temp is cleared to store another/next input digits
+      checkOperation(op); //check which operation sign to be displayed on screen
+
     } else if (NUMB1 != null) {
-      print('You have already selected an operation.');
-      NUMB2 = int.parse(temp);
-      temp = '';
+      //If it is the series operation , without '=' is clicked. e.g 1-2+3+...
+      //print('You have selected an operation before');
 
-      CalculatorBrain brain = CalculatorBrain();
+      //The code below compute the operation of two number before this new operation(op) is clicked.
+      NUMB2 = int.parse(
+          temp); //Extracting temp for the second binary number ( numb1 + numb2) -> numb2
+      temp = ''; // temp is cleared to store another/next input digits
+
+      CalculatorBrain brain =
+          CalculatorBrain(); //Calling the calculator brain class for computation
       if (_operation == OPERATION.ADD) {
         brain.add(NUMB1, NUMB2);
         print("Going for + operation");
@@ -86,6 +103,7 @@ class _Calculator_PageState extends State<Calculator_Page> {
     }
   }
 
+  //This function converts english digits to burmese digits
   String convertEng2Burmese(String english) {
     String burmese;
 
@@ -424,15 +442,16 @@ class _Calculator_PageState extends State<Calculator_Page> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Expanded(
-                          flex: 8,
-                          child: RegularNumberButton(
-                              isFun: () {
-                                print('0 is pressed.');
-                                setState(() {
-                                  keyFun('၀', '0');
-                                });
-                              },
-                              label: "၀")),
+                        flex: 8,
+                        child: RegularNumberButton(
+                            isFun: () {
+                              print('0 is pressed.');
+                              setState(() {
+                                keyFun('၀', '0');
+                              });
+                            },
+                            label: "၀"),
+                      ),
                       Expanded(
                         child: Container(
                           height: 60.0,
@@ -446,12 +465,12 @@ class _Calculator_PageState extends State<Calculator_Page> {
                         flex: 2,
                         child: RegularNumberButton(
                           isFun: () {
-                            print('Check the operation');
+                            //print('Check the operation');
                             setState(() {
                               NUMB2 = int.parse(temp);
-                              print(NUMB1);
-                              print(NUMB2);
-                              print(_operation);
+                              //print(NUMB1); //Check Points
+                              //print(NUMB2);
+                              //print(_operation);
 
                               if (NUMB1 != null &&
                                   NUMB2 != null &&
@@ -470,10 +489,14 @@ class _Calculator_PageState extends State<Calculator_Page> {
                                   brain.divide(NUMB1, NUMB2);
                                   print("Going for + operation");
                                 }
+                                NUMB1 = null;
+                                NUMB2 = null;
+                                _operation = null;
+
                                 var result = brain.result();
+                                NUMB1 = result;
                                 _display =
                                     convertEng2Burmese(result.toString());
-                                _operation = null;
                               }
                             });
                           },
