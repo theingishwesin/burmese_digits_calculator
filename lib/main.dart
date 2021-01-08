@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 
 import 'calculator_UI_screen.dart';
 
-void main() async {
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+void main() {
+  //await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(Burmese_Digits_Calculator());
 }
 
