@@ -24,13 +24,14 @@ class _Calculator_PageState extends State<Calculator_Page> {
 
   void operationFun(OPERATION op) {
     print("Inside the operationFun");
+
     if (_operation == null && temp != null) {
       _operation = op;
-
       if (NUMB1 == null) {
         NUMB1 = int.parse(temp);
         print('Numb1 is here! $NUMB1');
       } else {
+        //Thinking is this necessary.
         NUMB2 = int.parse(temp);
         print('Numb2 is here! $NUMB2');
       }
@@ -48,8 +49,40 @@ class _Calculator_PageState extends State<Calculator_Page> {
       if (op == OPERATION.DIVIDE) {
         _display = _display + " / ";
       }
-    } else {
+    } else if (NUMB1 != null) {
       print('You have already selected an operation.');
+      NUMB2 = int.parse(temp);
+      temp = '';
+
+      CalculatorBrain brain = CalculatorBrain();
+      if (_operation == OPERATION.ADD) {
+        brain.add(NUMB1, NUMB2);
+        print("Going for + operation");
+      } else if (_operation == OPERATION.SUBTRACT) {
+        brain.subtract(NUMB1, NUMB2);
+        print("Going for - operation");
+      } else if (_operation == OPERATION.MULTIPLY) {
+        brain.multiply(NUMB1, NUMB2);
+        print("Going for + operation");
+      } else if (_operation == OPERATION.DIVIDE) {
+        brain.divide(NUMB1, NUMB2);
+        print("Going for + operation");
+      }
+      var result = brain.result();
+      NUMB1 = result;
+      _operation = op;
+      if (op == OPERATION.ADD) {
+        _display = _display + " + ";
+      }
+      if (op == OPERATION.SUBTRACT) {
+        _display = _display + " - ";
+      }
+      if (op == OPERATION.MULTIPLY) {
+        _display = _display + " x ";
+      }
+      if (op == OPERATION.DIVIDE) {
+        _display = _display + " / ";
+      }
     }
   }
 
